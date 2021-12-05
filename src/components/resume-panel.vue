@@ -7,6 +7,8 @@
       <component
         :is="'resume-'+ resBlock.type"
         :value="resBlock.value"
+        :id="resBlock.id"
+        @clickX="$emit('clickX', resBlock.id)"
       ></component>
     </div>
   </div>
@@ -28,6 +30,7 @@ export default {
       activeBlock : ""
     }
   },
+  emits: ['clickX'],
   props: {
     'resume' : {
       type: Array,

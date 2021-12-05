@@ -1,14 +1,14 @@
 <template>
   <div class="container column">
     <control-panel @addBlock="AppResumeAddBlock"/>
-    <ResumePanel :resume="resume"/>
+    <ResumePanel :resume="resume" @clickX="DeleteResumeBlock"/>
   </div>
   <CommentsPanel
     :comments="comments"
-    :show-loader="loadingComments"
+    :ShowLoader="loadingComments"
     @loadComments="AppLoadComments"
   />
-  <AppLoader v-if="loadingComments"/>
+  <AppLoader v-if="false"/>
 </template>
 
 <script>
@@ -78,11 +78,29 @@ export default {
           ...data[key]
         }
       })
+    },
+    DeleteResumeBlock (id) {
+      if (confirm('Удалить блок?\nВосстановление будет невозможно!')) {
+        // this.AppFBDeleteBlock(id)
+         alert('Deleting block with id=' + id + '\nБлок не удален, т.к. функционал не реализован')
+      }
+
+    },
+    async AppFBDeleteBlock (id) {
+      const response = await axios.delete(
+        'https://vladilen-vue-course-kurs2-default-rtdb.europe-west1.firebasedatabase.app/resume.json',
+        {
+          data: { 'id': id }
+        }
+      )
+      console.log('response=', response)
+      await this.AppGetResume()
     }
   },
   mounted () {
     this.AppGetResume()
-  },
+  }
+  ,
   components: {
     ControlPanel,
     ResumePanel,

@@ -359,3 +359,35 @@ h3 {
         transform: rotate(360deg);
     }
 }
+
+/* *********** */
+.resume-block {
+    position: relative;
+}
+.delete-block {
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    color: red;
+    font-size: 1.5em;
+    cursor: pointer;
+    width: 30px;
+    transition: all 0.5s ease;
+}
+.to-delete {
+    /*border: 1px solid red;*/
+    background: lightpink !important;
+}
+.delete-block /* .delete-block-caption*/{
+    width: 20px;
+    display: inline-block;
+    overflow: hidden;
+    /*display: none;*/
+    transition: all 0.5s ease;
+    white-space: nowrap;
+    padding: 5px 5px 0 0;
+}
+.w100 {
+    width: 125px !important;
+    /*display: inline !important;*/
+}
